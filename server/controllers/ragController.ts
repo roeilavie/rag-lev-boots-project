@@ -6,6 +6,7 @@ export const loadData = async (_: Request, res: Response): Promise<void> => {
     await loadAllData();
     res.status(200).json({ ok: true });
   } catch (error) {
+    console.error('Failed to load data:', error);
     res.status(500).json({
       answer: '',
       error: 'Failed to load data',
@@ -30,6 +31,7 @@ export const askQuestion = async (
     const answer = await ask(userQuestion);
     res.status(200).json({ answer });
   } catch (error) {
+    console.error('Failed to get answer for question:', error);
     res.status(500).json({
       answer: '',
       error: 'Failed to get answer for question',

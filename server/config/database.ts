@@ -16,6 +16,9 @@ if (!databaseUrl) {
 const sequelize = new Sequelize(databaseUrl, {
   dialect: 'postgres',
   logging: false,
+  dialectOptions: {
+    ssl: { require: true, rejectUnauthorized: false },
+  },
 });
 
 const runMigrations = async (): Promise<void> => {
