@@ -1,4 +1,5 @@
 import { Sequelize } from 'sequelize';
+import pg from 'pg';
 import dotenv from 'dotenv';
 import { promisify } from 'util';
 import { exec } from 'child_process';
@@ -15,6 +16,7 @@ if (!databaseUrl) {
 
 const sequelize = new Sequelize(databaseUrl, {
   dialect: 'postgres',
+  dialectModule: pg,
   logging: false,
   dialectOptions: {
     ssl: { require: true, rejectUnauthorized: false },
