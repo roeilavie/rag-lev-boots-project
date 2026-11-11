@@ -3,6 +3,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import ragRoutes from './routes/ragRoutes';
 import { initializeDB } from './models/index';
+import mcpRoute from './mcp/httpRoute';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -13,6 +14,7 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 
 app.use('/api', ragRoutes);
+app.use('/mcp', mcpRoute);
 
 app.use(express.static(path.join(__dirname, '../public/dist')));
 
